@@ -7,6 +7,7 @@ import { addCoin } from '@/lib/redux/features/watchlist-slice'
 import { fetchTopCoins } from '@/services/coingecko'
 import type { Coin } from '@/types'
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CryptoTable() {
     const [coins, setCoins] = useState<Coin[]>([])
@@ -31,17 +32,19 @@ export default function CryptoTable() {
             title: 'Name',
             key: 'name',
             render: (coin: Coin) => (
-                <div className="flex items-center gap-2">
-                    <img
-                        src={coin.image}
-                        alt={coin.name}
-                        width={24}
-                        height={24}
-                        className="w-6 h-6 rounded-full"
-                    />
-                    <span>{coin.name}</span>
-                    <span className="text-gray-500 uppercase">({coin.symbol})</span>
-                </div>
+                <Link href={`/coin/${coin.id}`}>
+                    <div className="flex items-center gap-2">
+                        <img
+                            src={coin.image}
+                            alt={coin.name}
+                            width={24}
+                            height={24}
+                            className="w-6 h-6 rounded-full"
+                        />
+                        <span>{coin.name}</span>
+                        <span className="text-gray-500 uppercase">({coin.symbol})</span>
+                    </div>
+                </Link>
             ),
         },
         {
@@ -83,18 +86,20 @@ export default function CryptoTable() {
 
     return (
         <div className="space-y-4">
-            <Input
-                placeholder="Search cryptocurrencies..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="max-w-md"
-            />
+            <div className="w-full flex flex-col items-end">
+                <Input
+                    placeholder="Search cryptocurrencies..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="max-w-md"
+                />
+            </div>
             <Table
                 columns={columns}
                 dataSource={filteredCoins}
                 rowKey="id"
                 pagination={{
-                    pageSize: 10,
+                    pageSize: 100,
                     showSizeChanger: true,
                 }}
             />
