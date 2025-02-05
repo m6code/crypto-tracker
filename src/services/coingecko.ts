@@ -61,3 +61,54 @@ export async function fetchCoinHistory(id: string, days = 7) {
         throw new Error('Failed to fetch coin history')
     }
 }
+
+export async function fetchLatestPrices(coinIds: string) {
+    try {
+        const { data } = await api.get('/simple/price', {
+            params: {
+                ids: coinIds,
+                vs_currencies: 'usd',
+            },
+        })
+
+        // Transform response to { coinId: price } format
+        return Object.entries(data).reduce((acc, [id, prices]: [string, any]) => {
+            acc[id] = prices.usd
+            return acc
+        }, {} as Record<string, number>)
+    } catch (error) {
+        console.error('Error fetching latest prices:', error)
+        return {}
+    }
+}
+
+// Add rate limiting helper
+function createRateLimiter(maxRequests: number, timeWindow: number) {
+    let requests: number[] = []
+
+    return {
+        async waitForRateLimit() {
+            const now = Date.now()
+            requests = requests.filter(time => now - time < timeWindow)
+
+            if (requests.length >= maxRequests) {
+                const oldestRequest = requests[0]
+                const timeToWait = timeWindow - (now - oldestRequest)
+                await new Promise(resolve => setTimeout(resolve, timeToWait))
+            }
+
+            requests.push(now)
+        }
+    }
+}
+
+// Create rate limiter for CoinGecko API (50 requests per minute)
+const rateLimiter = createRateLimiter(50, 60000)
+
+// Wrap API calls with rate limiting
+export async function fetchWithRateLimit<T>(
+    apiCall: () => Promise<T>
+): Promise<T> {
+    await rateLimiter.waitForRateLimit()
+    return apiCall()
+}
