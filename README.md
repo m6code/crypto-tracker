@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Crypto Tracker
+- Repository URL: [Github](https://github.com/m6code/crypto-tracker)
+- Live Demo URL: [Crypto Tracker on Vercel](https://crypto-tracker-theta-three.vercel.app/)
 
-## Getting Started
+## Overview
+A comprehensive cryptocurrency tracking application built with Next.js, featuring real-time price tracking, search functionality, and a watchlist.
 
-First, run the development server:
+## Technologies Used
+- Next.js
+- Redux Toolkit
+- Tailwind CSS
+- Ant Design
+- Recharts
+- CoinGecko API
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- Top 100 Cryptocurrencies Listing
+- Real-time Price Tracking
+- Search Functionality
+- Watchlist Management
+- Detailed Coin Information
+- Responsive Design
+- Dark/Light Mode Support
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/old_page.tsx`. The page auto-updates as you edit the file.
+## Running the Project locally
+### Prerequisites
+- Node.js (v16+)
+- npm or yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Setup and Running 
+- [ ] Open your terminal 
+- [ ] Clone this repository to your local machine by running `git clone https://github.com/m6code/crypto-tracker.git`
+- [ ] Navigate to the just cloned repository with `cd crypto-tracker`
+- [ ] Install project dependencies with `npm install`
+- [ ] Run the dev server with `npm run dev` 
+- [ ] Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# TODOs
+- [ ] Add theming
+    - [ ] Add Light/Dark mode toggle button
+    - [ ] Add light/dark mode styling
+- [ ] Add spinner
+- [ ] Add fallback error page from failed api call
+- [ ] Responsiveness
