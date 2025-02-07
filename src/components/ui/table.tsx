@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react'
 import { Table, Input } from 'antd'
 import { useDispatch } from 'react-redux'
+import Image from "next/image";
+import Link from "next/link";
+
 import { addCoin } from '@/lib/redux/features/watchlist-slice'
 import { fetchTopCoins } from '@/services/coingecko'
 import type { Coin } from '@/types'
-import Image from "next/image";
-import Link from "next/link";
+
 
 export default function CryptoTable() {
     const [coins, setCoins] = useState<Coin[]>([])
@@ -34,7 +36,7 @@ export default function CryptoTable() {
             render: (coin: Coin) => (
                 <Link href={`/coin/${coin.id}`}>
                     <div className="flex items-center gap-2">
-                        <img
+                        <Image
                             src={coin.image}
                             alt={coin.name}
                             width={24}

@@ -1,5 +1,7 @@
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
+import Image from "next/image";
+
 import { getCoinDetails } from '@/services/coingecko'
 import PriceChart  from '@/components/ui/price-chart'
 // import { WatchlistButton } from '@/components/ui/watchlist-button'
@@ -21,9 +23,11 @@ export default async function CoinPage({ params }: PageProps) {
         <div className="space-y-8">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                    <img
+                    <Image
                         src={coin.image.large}
                         alt={coin.name}
+                        width={24}
+                        height={24}
                         className="w-16 h-16"
                     />
                     <div>

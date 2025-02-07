@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight, ArrowDownRight, Trash2 } from 'lucide-react'
 import { useDispatch } from 'react-redux'
+
 import { removeCoin } from '@/lib/redux/features/watchlist-slice'
 import { fetchLatestPrices } from '@/services/coingecko'
 import type { RootState } from '@/lib/redux/store'
@@ -93,9 +95,11 @@ function WatchlistCard({ coin, latestPrice, priceIncreased, onRemove }: Watchlis
                 className="block space-y-4"
             >
                 <div className="flex items-center gap-3">
-                    <img
+                    <Image
                         src={coin.image}
                         alt={coin.name}
+                        width={24}
+                        height={24}
                         className="w-8 h-8 rounded-full"
                     />
                     <div>
