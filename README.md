@@ -48,7 +48,9 @@ npm run dev
 ``` 
 - Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
+## Potential Challenges
+### API rate limits 
+The [Coingecko API has a rate limit](https://support.coingecko.com/hc/en-us/articles/4538771776153-What-is-the-rate-limit-for-CoinGecko-API-public-plan) for free accounts of 5 to 15 calls per minute, this occasionally causes the app to return an api error from time to time
 
 ---
 
