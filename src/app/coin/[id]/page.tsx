@@ -7,13 +7,12 @@ import PriceChart  from '@/components/ui/price-chart'
 // import { WatchlistButton } from '@/components/ui/watchlist-button'
 
 interface PageProps {
-    params: {
-        id: string
-    }
+    params: Promise<{ id: string }>
 }
 
 export default async function CoinPage({ params }: PageProps) {
-    const coin = await getCoinDetails(params.id)
+    const resolvedParams = await params
+    const coin = await getCoinDetails(resolvedParams.id)
 
     if (!coin) {
         notFound()
@@ -60,7 +59,7 @@ export default async function CoinPage({ params }: PageProps) {
                 <div>
                     <h2 className="text-xl font-semibold mb-4">Price History</h2>
                     <Suspense fallback={<div>Loading chart...</div>}>
-                        <PriceChart coinId={params.id} />
+                        <PriceChart coinId={resolvedParams.id} />
                     </Suspense>
                 </div>
             </div>
