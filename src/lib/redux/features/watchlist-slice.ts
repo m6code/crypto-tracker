@@ -24,5 +24,9 @@ export const watchlistSlice = createSlice({
     },
 })
 
+export const isCoinInWatchlist = (state: WatchlistState, coinId: string) => {
+    return state.coins.some(coin => coin.id === coinId);
+};
+
 export const { addCoin, removeCoin } = watchlistSlice.actions
 export default watchlistSlice.reducer

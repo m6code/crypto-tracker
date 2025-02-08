@@ -2,19 +2,21 @@
 
 import { useEffect, useState } from 'react'
 import { Table, Input } from 'antd'
-import { useDispatch } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Image from "next/image";
 import Link from "next/link";
 
-import { addCoin } from '@/lib/redux/features/watchlist-slice'
+import {addCoin, isCoinInWatchlist, removeCoin} from '@/lib/redux/features/watchlist-slice'
 import { fetchTopCoins } from '@/services/coingecko'
 import type { Coin } from '@/types'
+import type { RootState } from "@/lib/redux/store";
 
 
 export default function CryptoTable() {
     const [coins, setCoins] = useState<Coin[]>([])
     const [searchTerm, setSearchTerm] = useState('')
     const dispatch = useDispatch()
+    const watchlistCoins = useSelector((state: RootState) => state.watchlist)
 
     useEffect(() => {
         const loadCoins = async () => {
@@ -77,10 +79,10 @@ export default function CryptoTable() {
             key: 'actions',
             render: (coin: Coin) => (
                 <button
-                    onClick={() => dispatch(addCoin(coin))}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm"
+                    onClick={() => isCoinInWatchlist(watchlistCoins, coin.id) ? dispatch(removeCoin(coin.id)) : dispatch(addCoin(coin))}
+                    className={`bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-sm ${isCoinInWatchlist(watchlistCoins, coin.id) && 'bg-red-600 hover:bg-red-500'} `}
                 >
-                    Add to Watchlist
+                    {isCoinInWatchlist(watchlistCoins, coin.id)? 'Remove from Watchlist' : 'Add to Watchlist' }
                 </button>
             ),
         },
