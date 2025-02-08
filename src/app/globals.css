@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/*@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));*/
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -28,7 +30,7 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --color-bg-body: #4A4E69;
+  --color-bg-body: #1f2937;
   --color-text-primary: #FAE8FF;
   --color-bg-button: #22223B;
   --color-bg-button-hover: hsl(246.81, 12.5%, 25%);
@@ -42,7 +44,7 @@
 :root[data-theme="light"] {
   color-scheme: light;
   /* Colours */
-  --color-bg-body: #FFF7ED;
+  --color-bg-body: #FFFFFF;
   --color-text-primary: #9A3412;
   --color-bg-button: #9A3412;
   --color-bg-button-hover: #7c2d12;

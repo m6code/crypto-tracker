@@ -73,17 +73,17 @@ interface WatchlistCardProps {
 
 function WatchlistCard({ coin, latestPrice, priceIncreased, onRemove }: WatchlistCardProps) {
     const priceColor = priceIncreased === undefined
-        ? 'text-gray-900 dark:text-gray-100'
+        ? 'text-gray-900 dark:text-gray-400'
         : priceIncreased
             ? 'text-green-600 dark:text-green-400'
             : 'text-red-600 dark:text-red-400'
 
     return (
-        <div className="relative group rounded-lg border border-gray-200 dark:border-gray-800 p-4 hover:shadow-md transition-shadow">
+        <div className="relative group rounded-lg border border-gray-300 bg-slate-50 dark:bg-slate-800 dark:border-gray-600 p-4 hover:shadow-md transition-shadow">
             <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button
                     onClick={onRemove}
-                    className="p-1 text-gray-400 hover:text-red-500 transition-colors"
+                    className="p-1 text-gray-200 hover:text-red-500 transition-colors"
                     title="Remove from watchlist"
                 >
                     <Trash2 className="w-4 h-4" />
@@ -104,7 +104,7 @@ function WatchlistCard({ coin, latestPrice, priceIncreased, onRemove }: Watchlis
                     />
                     <div>
                         <h3 className="font-medium">{coin.name}</h3>
-                        <p className="text-sm text-gray-500 uppercase">{coin.symbol}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-200 uppercase">{coin.symbol}</p>
                     </div>
                 </div>
 
@@ -122,12 +122,12 @@ function WatchlistCard({ coin, latestPrice, priceIncreased, onRemove }: Watchlis
                         )}
                     </div>
 
-                    <div className="flex items-center justify-between text-sm text-gray-500">
+                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-200">
                         <span>Market Cap Rank</span>
                         <span>#{coin.market_cap_rank}</span>
                     </div>
 
-                    <div className="flex items-center justify-between text-sm text-gray-500">
+                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-200">
                         <span>24h Change</span>
                         <span className={coin.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'}>
                             {coin.price_change_percentage_24h.toFixed(2)}%
@@ -141,17 +141,17 @@ function WatchlistCard({ coin, latestPrice, priceIncreased, onRemove }: Watchlis
 
 function EmptyWatchlist() {
     return (
-        <div className="flex flex-col items-center justify-center p-8 text-center border-2 border-dashed rounded-lg border-gray-200 dark:border-gray-800">
+        <div className="flex flex-col items-center justify-center p-8 text-center border-2 bg-slate-50 border-dashed rounded-lg dark:bg-gray-700 border-gray-200 dark:border-gray-800">
             <div className="space-y-3">
                 <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
                     Your watchlist is empty
                 </h3>
-                <p className="text-gray-500 max-w-sm">
+                <p className="text-gray-500 dark:text-gray-200 max-w-sm">
                     Start tracking your favorite cryptocurrencies by adding them to your watchlist from the home page.
                 </p>
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[#593D88] rounded-md hover:bg-[#5A3F9A] transition-colors"
                 >
                     Browse Cryptocurrencies
                 </Link>
