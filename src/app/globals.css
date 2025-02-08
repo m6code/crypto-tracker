@@ -5,18 +5,56 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  color-scheme: light dark;
+  color-scheme: light;
+  /* Colours */
+  --color-bg-body: #FFF7ED;
+  --color-text-primary: #9A3412;
+  --color-bg-button: #9A3412;
+  --color-bg-button-hover: #7c2d12;
+  --color-text-button: #FDBA74;
+  --color-bg-card: #FED7AA;
+  --color-bg-text: #F9FAFC;
+  --icon-fill: var(--color-bg-button);
+  --icon-fill-hover: var(--color-bg-button-hover);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --background: #0a0a0a;*/
+/*    --foreground: #ededed;*/
+/*  }*/
+/*}*/
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg-body: #4A4E69;
+  --color-text-primary: #FAE8FF;
+  --color-bg-button: #22223B;
+  --color-bg-button-hover: hsl(246.81, 12.5%, 25%);
+  --color-text-button: #FAE8FF;
+  --color-bg-card: #383953;
+  --color-bg-text: #ADADAD;
+  --icon-fill: var(--color-text-button);
+  --icon-fill-hover: #f0abfc;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  /* Colours */
+  --color-bg-body: #FFF7ED;
+  --color-text-primary: #9A3412;
+  --color-bg-button: #9A3412;
+  --color-bg-button-hover: #7c2d12;
+  --color-text-button: #FDBA74;
+  --color-bg-card: #FED7AA;
+  --color-bg-text: #F9FAFC;
+  --icon-fill: var(--color-bg-button);
+  --icon-fill-hover: var(--color-bg-button-hover);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-text-primary);
+  background: var(--color-bg-body);
   font-family: Arial, Helvetica, sans-serif;
 }

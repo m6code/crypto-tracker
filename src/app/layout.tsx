@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
+import "./theme-toggle.css"
 import Providers from "@/app/provider";
 import NavBar from "@/components/layout/navbar";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +35,11 @@ export default function RootLayout({
       <Providers>
           <NavBar />
           <main className="container mx-auto px-4 pb-8">
+              <Script
+                  src="/theme-toggle.js"
+                  strategy="beforeInteractive"
+                  type="text/javascript"
+              />
               {children}
           </main>
       </Providers>
