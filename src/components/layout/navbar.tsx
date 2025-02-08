@@ -8,7 +8,7 @@ export default function NavBar() {
                     Crypto Tracker
                 </Link>
             </h2>
-            <ul className="flex space-x-6 mr-6 text-purple-50 text-xl font-bold">
+            <ul className="flex items-center space-x-6 mr-6 text-purple-50 text-xl font-bold">
                 <li>
                     <Link href="/">
                         Home

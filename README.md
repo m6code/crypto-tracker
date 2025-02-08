@@ -56,9 +56,9 @@ The [Coingecko API has a rate limit](https://support.coingecko.com/hc/en-us/arti
 
 
 # TODOs
-- [ ] Add theming
-    - [ ] Add Light/Dark mode toggle button
-    - [ ] Add light/dark mode styling
+- [x] Add theming
+    - [x] Add Light/Dark mode toggle button
+    - [x] Add light/dark mode styling
 - [ ] Add spinner
 - [ ] Add fallback error page from failed api call
 - [ ] Responsiveness
