@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
 import { Coin } from '@/types'
 
 interface WatchlistState {

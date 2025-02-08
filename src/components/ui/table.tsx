@@ -80,7 +80,7 @@ export default function CryptoTable() {
             render: (coin: Coin) => (
                 <button
                     onClick={() => isCoinInWatchlist(watchlistCoins, coin.id) ? dispatch(removeCoin(coin.id)) : dispatch(addCoin(coin))}
-                    className={`bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-sm ${isCoinInWatchlist(watchlistCoins, coin.id) && 'bg-red-600 hover:bg-red-500'} `}
+                    className={`bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-sm lg:min-w-[169px] ${isCoinInWatchlist(watchlistCoins, coin.id) && 'bg-red-600 hover:bg-red-500'} `}
                 >
                     {isCoinInWatchlist(watchlistCoins, coin.id)? 'Remove from Watchlist' : 'Add to Watchlist' }
                 </button>
