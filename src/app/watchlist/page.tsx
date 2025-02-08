@@ -1,4 +1,6 @@
 import { Suspense } from 'react'
+
+import Spinner from "@/components/ui/spinner";
 import { WatchlistContent } from '@/components/ui/watchlist-content'
 // import { EmptyState } from '@/components/ui/empty-state'
 
@@ -11,7 +13,7 @@ export default function WatchlistPage() {
     return (
         <div className="space-y-6">
             <h1 className="text-3xl font-bold">My Watchlist</h1>
-            <Suspense fallback={<div>Loading watchlist...</div>}>
+            <Suspense fallback={<Spinner />}>
                 <WatchlistContent />
             </Suspense>
         </div>

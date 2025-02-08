@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { getCoinDetails } from '@/services/coingecko'
 import PriceChart  from '@/components/ui/price-chart'
+import Spinner from "@/components/ui/spinner";
 // import { WatchlistButton } from '@/components/ui/watchlist-button'
 
 interface PageProps {
@@ -58,7 +59,7 @@ export default async function CoinPage({ params }: PageProps) {
 
                 <div>
                     <h2 className="text-xl font-semibold mb-4">Price History</h2>
-                    <Suspense fallback={<div>Loading chart...</div>}>
+                    <Suspense fallback={<Spinner />}>
                         <PriceChart coinId={resolvedParams.id} />
                     </Suspense>
                 </div>
